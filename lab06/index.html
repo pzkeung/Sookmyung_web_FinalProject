@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM 실습</title>
+    <style>
+        #rect {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1 id="title"></h1>
+    <h1 id="spring" class="season">봄</h1>
+    <h1 id="summer" class="season">여름</h1>
+    <h1 id="autumn" class="season">가을</h1>
+    <h1 id="winter" class="season">겨울</h1>
+    <div id="rect"></div>
+    <script>
+        //let title = prompt("제목을 입력하세요.");
+        let t = document.getElementById("title");
+        t.innerText = title;
+        t.style.color = "blue";
+
+        let season = document.getElementsByClassName("season");
+
+        for (let i = 0; i < season.length; i++) {
+            season[i].style.color = "red"; //.style.color => 이런식으로 CSS 속성 변경 or 얻어온 객체룰 대상으로 이것저것 가능
+        }
+
+        let myRect = document.getElementById("rect");
+        //myRect.addEventListener(이벤트명, 이벤트핸들러);
+        myRect.addEventListener("mouseover", function () {
+            myRect.style.backgroundColor = "green";
+            myRect.style.borderRadius = "50%";
+        });
+        myRect.addEventListener("mouseout", function () {
+            myRect.style.backgroundColor = "";
+            myRect.style.borderRadius = "";
+        });
+        myRect.addEventListener("click", function () {
+            myRect.style.backgroundColor = "yellow";
+            myRect.style.borderRadius = "25%";
+        });
+    </script>
+</body>
+
+</html>

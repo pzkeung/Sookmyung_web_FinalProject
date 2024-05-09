@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lotto lab</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrap {
+            width: 300px;
+            margin: 0 auto;
+            margin-top: 50px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background: lightblue;
+            border-radius: 20px;
+            box-shadow: 5px 5px 2px gray;
+        }
+
+        button {
+            padding: 5px;
+            background-color: rgb(255, 255, 255);
+            color: black;
+            border: none;
+            margin-top: 20px;
+            box-shadow: 3px 3px 2px gray;
+        }
+
+        #create {
+            font-weight: bold;
+            color: red;
+        }
+
+        #close {
+            font-weight: bold;
+            color: gray;
+            margin-left: 240px;
+        }
+
+        #lotto {
+            width: 200px;
+            height: 50px;
+            color: blue;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-top: 20px;
+            line-height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <h2>로또 번호 생성기</h2>
+        <button id="create" onclick="lotto()">로또 번호 생성하기</button>
+        <div id="lotto"></div>
+        <button id="close" onclick="window.close()">창 닫기</button>
+    </div>
+    <script>
+        function lotto() {
+            let lotto = [];
+            while (lotto.length < 6) {
+                let num = Math.floor(Math.random() * 45) + 1;
+                //중복 검사
+                if (lotto.indexOf(num) === -1) {
+                    lotto.push(num);
+                }
+            }
+            document.getElementById("lotto").innerText = lotto;
+        }
+    </script>
+</body>
+
+</html>
