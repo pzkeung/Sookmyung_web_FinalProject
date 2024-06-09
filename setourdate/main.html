@@ -10,6 +10,10 @@
     <style>
         body {
             font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
         }
 
         .navbar {
@@ -35,7 +39,6 @@
 
         .footer {
             background-color: #e3f2fd;
-            padding: 10px;
             text-align: center;
         }
 
@@ -48,27 +51,25 @@
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href="main.html">
+        <nav class="navbar navbar-light">
+            <a class="navbar-brand d-flex align-items-center" href="main.html">
                 <img src="https://via.placeholder.com/150" alt="Set Our Date logp" style="height: 40px;">
-                <span>SaturDate</span>
+                <span class="ms-2">SaturDate</span>
             </a>
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">How To Use</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Set New Date</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">My Date Log</a>
-                    </li>
-                </ul>
-            </div>
+            <ul class="navbar-nav d-flex flex-row">
+                <li class="nav-item mx-2">
+                    <a class="nav-link" href="#">How To Use</a>
+                </li>
+                <li class="nav-item mx-2">
+                    <a class="nav-link" href="#">Set New Date</a>
+                </li>
+                <li class="nav-item mx-2">
+                    <a class="nav-link" href="#">My Date Log</a>
+                </li>
+            </ul>
         </nav>
     </header>
-    <main>
+    <main class="flex-grow-1">
         <div class="container-fluid" id="banner">
             <div class="container text-center my-5">
                 <h1 class="catchphrase">catchphrase HERE</h1>
@@ -94,21 +95,19 @@
             <p>여기에 설명 어쩌고 저쩌고 구구절절 구절구절</p>
         </div>
     </main>
-    <footer>
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Git</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Privacy</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Feedback</a>
-                    </li>
-                </ul>
-            </div>
+    <footer class="text-center mt-auto">
+        <nav class="navbar navbar-light d-flex justify-content-center align-items-center">
+            <ul class="navbar-nav d-flex flex-row">
+                <li class="nav-item mx-2">
+                    <a class="nav-link" href="#">Git</a>
+                </li>
+                <li class="nav-item mx-2">
+                    <a class="nav-link" href="#">Privacy</a>
+                </li>
+                <li class="nav-item mx-2">
+                    <a class="nav-link" href="#">Feedback</a>
+                </li>
+            </ul>
     </footer>
 </body>
 
