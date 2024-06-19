@@ -78,7 +78,7 @@
                             <td>3</td>
                             <td>2024-07-14</td>
                             <td>5</td>
-                            <td><a href="date_list_item.html" class="btn btn-light">바로가기</a></td>
+                            <td><a href="#" class="btn btn-light">바로가기</a></td>
                         </tr>
 
                     </tbody>
@@ -126,7 +126,7 @@
             var newMeeting = JSON.parse(localStorage.getItem('newMeeting'));
             if (newMeeting) {
                 addMeetingToTable(newMeeting);
-                localStorage.removeItem('newMeeting'); // 처리가 끝난 데이터 삭제
+                localStorage.removeItem('newMeeting');
             }
         });
 
@@ -141,11 +141,10 @@
             cell2.textContent = meeting.members;
 
             var cell3 = newRow.insertCell(2);
-            cell3.textContent = '-';
+            cell3.textContent = meeting.confirmedDate ? meeting.confirmedDate : '-';
 
             var cell4 = newRow.insertCell(3);
-            cell4.textContent = '-'; // 장소 정보는 초기에 없음
-
+            cell4.textContent = meeting.savedPlace ? meeting.savedPlace : '-';
             var cell5 = newRow.insertCell(4);
             var link = document.createElement('a');
             link.href = 'date_list_item.html';

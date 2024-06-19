@@ -48,6 +48,11 @@
         .text-detail {
             font-weight: bold;
         }
+
+        .container-confirm {
+            display: flex;
+            justify-content: end;
+        }
     </style>
 </head>
 
@@ -102,6 +107,10 @@
                         <small>: 목록에 원하는 장소 추가하기</small></button>
                 </div>
             </div>
+            <div class="container mt-3 container-confirm">
+                <button id="btn-return" class="btn btn-lg btn-outline-primary" onclick="goToList()">저장 후 목록으로
+                    돌아가기</button>
+            </div>
         </div>
     </main>
     <footer class="text-center mt-auto">
@@ -133,6 +142,22 @@
             localStorage.removeItem('resultDate');
             localStorage.removeItem('resultPlace');
         });
+
+        function goToList() {
+            var resultDate = document.getElementById('result-date').innerText;
+            var resultPlace = document.getElementById('result-place').innerText;
+
+            var newMeeting = {
+                meetingName: "챔민승 서울 약속",
+                members: "4",
+                confirmedDate: resultDate,
+                savedPlace: resultPlace
+            };
+
+            localStorage.setItem('newMeeting', JSON.stringify(newMeeting));
+
+            location.href = 'my_date_log.html';
+        }
     </script>
 </body>
 
