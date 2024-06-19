@@ -21,3 +21,14 @@ body {
 footer {
     font-size: 0.8rem;
 }
+
+.btn-primary {
+    background-color: #6fabd6;
+    border-color: #6fabd6;
+}
+
+.btn-primary:hover,
+.btn-primary:active {
+    background-color: #4189bc;
+    border-color: #4189bc;
+}
