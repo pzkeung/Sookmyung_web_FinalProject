@@ -24,12 +24,27 @@
             line-height: 1.6;
         }
 
+        .text-underlined {
+            background: linear-gradient(to top, #e3f2fd 50%, transparent 50%);
+        }
+
         .btn-right {
             width: 140px;
             position: absolute;
             right: 50px;
             top: 50%;
             transform: translateY(-50%);
+        }
+
+        .btn-outline-primary {
+            color: #6fabd6;
+            border-color: #6fabd6;
+        }
+
+        .btn-outline-primary:hover {
+            color: #fff;
+            background-color: #6fabd6;
+            border-color: #6fabd6;
         }
     </style>
 </head>
@@ -58,24 +73,40 @@
             <h4 class="mb-4">How To Use</h4>
             <div class="step">
                 <h5>Step 1: 새로운 모임을 생성하고 공유</h5>
-                <p>첫 번째 단계는 계정을 생성하는 것입니다. 페이지 상단의 'Sign Up' 버튼을 클릭하여 회원 가입을 진행하세요. 필수 정보를 입력한 후, 'Submit' 버튼을 클릭하면 계정이
-                    생성됩니다.</p>
+                <p>첫 번째 단계는 모임을 생성하는 것입니다. 페이지 상단의 'Set new date' 메뉴로 들어가거나 우측의 '바로가기' 버튼을 누르면 새로운 모임의 정보를 입력하여 작성합니다.
+                    <br>
+                    약속의 이름, 참여하는 인원, 간단한 한 줄 설명, 후보가 될 날짜 범위를 입력하면 <span class="text-underlined">새로운 모임이 생성</span>되며, 이
+                    링크를 <span class="text-underlined">다른
+                        사용자와 공유</span>할 수 있습니다.
+                </p>
                 <a href="./new_date.html" class="btn btn-outline-primary btn-small btn-right">Set new
                     date<br>바로가기 &rarr;</a>
             </div>
             <div class="step">
                 <h5>Step 2: 친구들과 함께 투표로 날짜를 결정</h5>
-                <p>계정 생성 후, 프로필을 설정하세요. 'Profile' 페이지에서 사진을 업로드하고, 이름, 연락처 등의 정보를 입력하세요. 이러한 정보는 다른 사용자와의 소통에 도움이 됩니다.
+                <p>
+                    공유된 모임 링크를 통해 다른 사용자들과 투표를 진행합니다. 각자 불가능한 날짜를 투표한 후 모든 사용자가 투표에 참여하면 투표를 완료합니다.<br>소거법을 활용한 약속
+                    날짜의
+                    투표를 통해 <span class="text-underlined">모두가 가능한
+                        날짜를 결정</span>할 수 있습니다. 이러한 방법은 투표 결과의 확실성이 보장되므로 모임 일정을 잡는 데 있어서 매우 효과적입니다.
                 </p>
             </div>
             <div class="step">
                 <h5>Step 3: 원하는 모임 장소를 공유형 북마크에 보관</h5>
-                <p>프로필 설정을 완료한 후, 'Set New Date' 페이지로 이동하여 새로운 일정을 추가하세요. 날짜, 시간, 장소 등의 정보를 입력하고 'Save' 버튼을 클릭하세요. 이렇게
-                    하면 새로운 일정이 생성됩니다.</p>
+                <p>공유된 모임 링크를 통해 다른 사용자들과 모임 정보를 공유합니다. 사용자는 공유형 페이지에서 각자 접근하여 원하는 장소를 <span
+                        class="text-underlined">자유롭게 북마크에 추가</span>할 수 있습니다.<br>
+                    내장된 <span class="text-underlined">지도를 바로 검색</span>할 수 있으므로 실시간으로 장소를 확인하며 편리하게 북마크에 장소를 추가할 수 있게
+                    하였습니다.</p>
             </div>
             <div class="step">
                 <h5>Step 4: 데이트 로그에서 예정된 모임 확인 / 지나간 모임 기록</h5>
-                <p>'My Date Log' 페이지에서 모든 일정을 확인하고 관리할 수 있습니다. 일정을 수정하거나 삭제할 수 있으며, 다른 사용자와 공유할 수도 있습니다.</p>
+                <p>'My Date Log' 페이지에서는 지나간, 그리고 앞으로의 모든 약속을 확인하고 관리할 수 있습니다. 상단의 메뉴나 바로가기 버튼을 선택하여 이동할 수 있습니다.<br>
+                    <span class="text-underlined">앞으로의 약속</span>은 확정된 날짜와 장소 북마크를 확인할 수 있으며, 확정되지 않은 약속은 바로 투표 페이지로 이동하여
+                    날짜를 결정할 수 있습니다.
+                    <br>
+                    <span class="text-underlined">지나간 약속</span>은 날짜와 장소를 엽서 형태로 제작하여 확인하고 다운 받을 수 있습니다. 여러분의 소중한 추억을 데이트
+                    로그에 남겨보세요!
+                </p>
                 <a href="./my_date_log.html" class="btn btn-outline-primary btn-small btn-right">My date
                     log<br>바로가기 &rarr;</a>
             </div>

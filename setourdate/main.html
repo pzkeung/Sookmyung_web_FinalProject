@@ -20,15 +20,31 @@
         .catchphrase {
             font-family: 'Bitter', sans-serif;
             font-size: 2rem;
+            text-align: center;
+        }
+
+        .point-text {
+            color: #6fabd6;
+            font-style: italic;
         }
 
         .banner-text {
-            font-size: 1.25rem;
+            font-size: 1.1rem;
+            text-align: center;
+            padding-right: 60px;
+        }
+
+        .container-text {
+            padding-left: 200px;
+        }
+
+        .container-icon {
+            padding-right: 200px;
         }
 
         .icons {
-            width: 100px;
-            height: 100px;
+            width: 150px;
+            height: 150px;
         }
 
         #icon1 {
@@ -41,6 +57,21 @@
 
         #icon3 {
             transform: translateY(-20px);
+        }
+
+        .container-garo {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .text-underlined {
+            background: linear-gradient(to top, #e3f2fd 50%, transparent 50%);
+        }
+
+        .info-text {
+            font-size: 1.1rem;
         }
     </style>
 </head>
@@ -65,14 +96,17 @@
         </nav>
     </header>
     <main class="flex-grow-1">
-        <div class="container-fluid" id="banner">
-            <div class="container text-center my-5">
-                <h1 class="catchphrase">catchphrase HERE</h1>
-                <p class="banner-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
-                <a href="./new_date.html" class="btn btn-primary btn-lg mt-3">Get Started &rarr;</a>
-                <p class="mt-0 text-muted">Try it for free</p>
+        <div class="container-fluid my-3" id="banner">
+            <div class="container container-text text-center my-5">
+                <h1 class="catchphrase">How about this <span class="point-text">saturday</span>?<br>Let's <span
+                        class="point-text">set our date</span>!</h1>
+                <p class="banner-text mt-4"><em>"우리 언제 밥 한 번 먹자 ~"</em><br><em>"너무 좋지! 될 때 연락해 :)"</em></p>
+                <p class="banner-text">
+                    어영부영 말로만 정하다 파토난 약속이 몇 개인가요?<br>SaturDate에서 약속을 성공적으로 관리하세요.</p>
+                <button class="btn btn-primary btn-lg mt-3" onclick="checkLogin()">Simple Login</button>
+                <p class="my-0 text-muted">click here to be a user</p>
             </div>
-            <div class="container text-center my-5">
+            <div class="container text-center container-icon my-5">
                 <div class="row">
                     <div class="col">
                         <img src="./images/icons/time-management.png" alt="Calendar icon" class="img-fluid icons"
@@ -87,15 +121,37 @@
                 </div>
             </div>
         </div>
-        <div class="container-fluid" id="info">
-            <p>여기에 설명 어쩌고 저쩌고 구구절절 구절구절</p>
+        <div class="container-fluid container-garo my-4" id="info">
+            <div class="container">
+                <h4 class="text-center my-3"><strong>&lt;Date Poll&gt;</strong></Date>
+                </h4>
+                <p class="text-center info-text">가능한 날짜들을 후보에 올리세요.</p>
+                <p class="text-center info-text">안 되는 날짜를 <span class="text-underlined">지워주세요</span>.</p>
+                <p class="text-center info-text">모든 멤버들이 투표하면 <br><span class="text-underlined">모두가 가능한 날짜</span>가
+                    확정됩니다.</p>
+            </div>
+            <div class="container">
+                <h4 class="text-center my-3"><strong>&lt;Place Bookmark&gt;</strong></Date>
+                </h4>
+                <p class="text-center info-text"><span class="text-underlined">지도를 검색</span>하여<br>원하는 장소를 확인하세요.</p>
+                <p class="text-center info-text"><span class="text-underlined">북마크에 자유롭게 저장</span>하세요.</p>
+                <p class="text-center info-text">즐겨찾기에 추가할 수 있습니다.</p>
+            </div>
+            <div class="container">
+                <h4 class="text-center my-3"><strong>&lt;Review Date&gt;</strong></Date>
+                </h4>
+                <p class="text-center info-text">지나간 약속 또한 소중하죠.</p>
+                <p class="text-center info-text">입력된 약속 정보로 만들어진<br><span class="text-underlined">엽서를 보며 추억</span>하세요.
+                </p>
+                <p class="text-center info-text">엽서는 다운로드 할 수 있습니다.</p>
+            </div>
         </div>
     </main>
     <footer class="text-center mt-auto">
         <nav class="navbar navbar-light d-flex justify-content-center align-items-center py-0">
             <ul class="navbar-nav d-flex flex-row">
                 <li class="nav-item mx-5">
-                    <a class="nav-link" href="#">Git</a>
+                    <a class="nav-link" href="https://github.com/pzkeung">Git</a>
                 </li>
                 <li class="nav-item mx-5">
                     <a class="nav-link" href="#">Privacy</a>
@@ -105,6 +161,21 @@
                 </li>
             </ul>
     </footer>
+    <script>
+        function checkLogin() {
+            var isMember = localStorage.getItem('isMember');
+            if (isMember !== 'true') {
+                var user = prompt('user id를 입력해주세요.');
+                if (user !== null) {
+                    localStorage.setItem('isMember', 'true');
+                }
+            }
+            else {
+                alert('방문이 확인되었습니다. My date log로 이동합니다.');
+                location.href = './my_date_log.html';
+            }
+        }
+    </script>
 </body>
 
 </html>
