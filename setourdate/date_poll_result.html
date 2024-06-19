@@ -219,10 +219,8 @@
                 <p>확정된 날짜는 <span id="result-date"><strong>2024-08-04</strong></span> 입니다.</p>
             </div>
             <div class="container mb-5 container-confirm">
-                <a href="./date_poll_result.html">
-                    <button id="btn-return" class="btn btn-primary btn-lg mx-3" onclick="returnToDetail()">약속 상세로 돌아가기
-                        &rarr;</button>
-                </a>
+                <button id="btn-return" class="btn btn-primary btn-lg mx-3" onclick="goToDetail()">약속 상세로 돌아가기
+                    &rarr;</button>
             </div>
     </main>
     <footer class="text-center mt-auto">
@@ -240,12 +238,12 @@
             </ul>
     </footer>
     <script>
-        function returnToDetail() {
+        function goToDetail() {
             var resultDate = document.getElementById('result-date').innerText;
 
             localStorage.setItem('resultDate', resultDate);
 
-            location.href = 'date_list_item.html';
+            location.href = './date_list_item.html';
         }
     </script>
 </body>

@@ -8,6 +8,64 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="./common.css">
+    <style>
+        .container-garo {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        .garo-item {
+            width: 50%;
+            margin: 0 10px;
+        }
+
+        #inputField {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #placeInput,
+        #mapSearchInput {
+            width: 90%;
+        }
+
+        #mapSearchBtn,
+        #addBtn {
+            width: 20%;
+        }
+
+        .list-group {
+            width: 100%;
+            border: 2px solid #e3f2fd;
+        }
+
+        .list-group-item {
+            width: 95%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 10px;
+        }
+
+        .icon {
+            cursor: pointer;
+        }
+
+        #map {
+            width: 100%;
+            height: 400px;
+        }
+
+        .container-confirm {
+            display: flex;
+            justify-content: end;
+        }
+    </style>
+    <script type="text/javascript"
+        src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=wnbjs5tj1q&submodules=geocoder"></script>
 </head>
 
 <body>
@@ -30,7 +88,32 @@
         </nav>
     </header>
     <main class="flex-grow-1">
-        content
+        <div class="container my-4 mx-5 container-garo">
+            <div class="container garo-item">
+                <h4 class="mb-4">Map</h4>
+                <div id="map"></div>
+                <div class="container" id="inputField">
+                    <input type="text" id="mapSearchInput" class="form-control my-2 mx-1" placeholder="장소 검색">
+                    <button id="mapSearchBtn" class="btn btn-primary mx-1" onclick="searchPlace()">검색</button>
+                </div>
+            </div>
+            <div class="container garo-item">
+                <h4 class="mb-4">Bookmark</h4>
+                <div class="container-bookmark">
+                    <div id="inputField">
+                        <input type="text" id="placeInput" class="form-control my-2" placeholder="추가하고 싶은 장소 입력">
+                        <button id="addBtn" type="button" class="btn btn-primary mx-1" onclick="addPlace()">+</button>
+                    </div>
+                    <ul id="placeList" class="list-group my-4 py-2 px-2">
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container mb-5 container-confirm">
+            <button id="btn-return" class="btn btn-primary btn-lg mx-3" onclick="goToDetail()">약속 상세로 돌아가기
+                &rarr;</button>
+        </div>
     </main>
     <footer class="text-center mt-auto">
         <nav class="navbar navbar-light d-flex justify-content-center align-items-center py-0">
@@ -46,6 +129,107 @@
                 </li>
             </ul>
     </footer>
+    <script>
+        var map = new naver.maps.Map('map', {
+            center: new naver.maps.LatLng(37.5665, 126.9780),
+            zoom: 15
+        });
+
+        //현재 위치로 center 이동
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                var lat = position.coords.latitude;
+                var lng = position.coords.longitude;
+                map.setCenter(new naver.maps.LatLng(lat, lng));
+            });
+        }
+
+        function searchPlace() {
+            var searchInput = document.getElementById("mapSearchInput").value;
+
+            naver.maps.Service.geocode({ query: searchInput }, function (status, response) {
+                if (status !== naver.maps.Service.Status.OK) {
+                    return alert('검색 결과가 없습니다.');
+                }
+
+                var result = response.v2.addresses[0];
+                var location = new naver.maps.LatLng(result.y, result.x);
+
+                map.setCenter(location);
+                new naver.maps.Marker({
+                    position: location,
+                    map: map
+                });
+            });
+
+            var infoWindow = new naver.maps.InfoWindow({
+                content: '<div style="padding:10px;min-width:200px;line-height:150%;">' + result.address + '</div>'
+            });
+
+            naver.maps.Event.addListener(marker, "click", function (e) {
+                if (infoWindow.getMap()) {
+                    infoWindow.close();
+                } else {
+                    infoWindow.open(map, marker.getPosition());
+                }
+            });
+        }
+
+        function addPlace() {
+            var placeInput = document.getElementById("placeInput");
+            var placeList = document.getElementById("placeList");
+            var place = placeInput.value;
+
+            if (place.trim() === "") {
+                return;
+            }
+
+            var li = document.createElement("li");
+            li.className = "list-group-item d-flex align-items-center justify-content-between";
+
+            var starIcon = document.createElement("span");
+            starIcon.className = "icon";
+            starIcon.innerHTML = "&#9734;"; // 빈 별 모양
+            starIcon.onclick = function () {
+                if (starIcon.classList.contains("text-filled")) {
+                    starIcon.classList.remove("text-filled");
+                    starIcon.innerHTML = "&#9734;"; // 빈 별로 변경
+                } else {
+                    starIcon.classList.add("text-filled");
+                    starIcon.innerHTML = "&#9733;"; // 채워진 별로 변경
+                }
+            };
+
+            var placeText = document.createElement("span");
+            placeText.textContent = place;
+
+            var deleteIcon = document.createElement("span");
+            deleteIcon.className = "icon ms-3";
+            deleteIcon.innerHTML = "&#x2716;";
+            deleteIcon.onclick = function () {
+                placeList.removeChild(li);
+            };
+
+            li.appendChild(starIcon);
+            li.appendChild(placeText);
+            li.appendChild(deleteIcon);
+            placeList.appendChild(li);
+
+            placeInput.value = "";
+        }
+
+        function goToDetail() {
+            var placeList = document.getElementById("placeList");
+            var resultPlace = placeList.childElementCount
+
+            localStorage.setItem('resultPlace', resultPlace);
+
+            //가짜ㅎㅎ
+            localStorage.setItem('resultDate', '2024-08-04');
+
+            location.href = './date_list_item.html';
+        }
+    </script>
 </body>
 
 </html>

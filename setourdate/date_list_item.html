@@ -81,13 +81,13 @@
                 <div class="grid-item item-sero">
                     <h4 class="mb-3">Date</h4>
                     <div id="date_result" class="py-5">
-                        <p class="text-detail">2024-08-02 ~ 2024-08-06</p>
+                        <p id="result-date" class="text-detail">2024-08-02 ~ 2024-08-06</p>
                     </div>
                 </div>
                 <div class="grid-item item-sero">
                     <h4 class="mb-3">Place</h4>
                     <div id="place_result" class="py-5">
-                        <p class="text-detail">0</p>
+                        <p id="result-place" class="text-detail">0</p>
                     </div>
                 </div>
                 <div class="grid-item">
@@ -125,7 +125,13 @@
                 document.getElementById('result-date').innerText = resultDate;
             }
 
+            var resultPlace = localStorage.getItem('resultPlace');
+            if (resultPlace) {
+                document.getElementById('result-place').innerText = resultPlace;
+            }
+
             localStorage.removeItem('resultDate');
+            localStorage.removeItem('resultPlace');
         });
     </script>
 </body>
