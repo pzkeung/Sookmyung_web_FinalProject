@@ -48,6 +48,16 @@
         .text-detail {
             font-weight: bold;
         }
+
+        .btn-disabled {
+            background-color: #6490b0;
+            border: none;
+        }
+
+        .btn-disabled:hover {
+            background-color: #6490b0;
+            border: none;
+        }
     </style>
 </head>
 
@@ -73,32 +83,32 @@
     <main class="flex-grow-1">
         <div class="container my-4 mx-5">
             <div class="grid-container">
-                <h4 class="mb-2">챔민승 서울 약속</h4>
+                <h4 class="mb-2">언니, 엄마랑 디올 팝업</h4>
                 <div id="meeting_detail" class="grid-item single-column item-sero ps-5 mb-4 py-5">
-                    <p class="text-detail">4명</p>
-                    <p class="text-detail">오랜만에 완전체!</p>
+                    <p class="text-detail">3명</p>
+                    <p class="text-detail">언니가 고생한만큼 예쁘다는 디올 팝업 구경하고 맛있는 점심 먹기!</p>
                 </div>
                 <div class="grid-item item-sero">
                     <h4 class="mb-3">Date</h4>
                     <div id="date_result" class="py-5">
-                        <p class="text-detail">2024-08-02 ~ 2024-08-06</p>
+                        <p class="text-detail">2024-06-20</p>
                     </div>
                 </div>
                 <div class="grid-item item-sero">
                     <h4 class="mb-3">Place</h4>
                     <div id="place_result" class="py-5">
-                        <p class="text-detail">0</p>
+                        <p class="text-detail">2</p>
                     </div>
                 </div>
                 <div class="grid-item">
-                    <button type="button" class="btn btn-primary py-3"
-                        onclick="location.href='date_poll.html';"><strong>Date Poll</strong><br>
+                    <button type="button" class="btn btn-primary btn-disabled py-3"
+                        onclick="location.href='#';"><strong>Date Poll</strong><br>
                         <small>: 날짜 투표하여 약속 날짜 확정하기</small>
                     </button>
                 </div>
                 <div class="grid-item">
-                    <button type="button" class="btn btn-primary py-3"
-                        onclick="location.href='place_list.html';"><strong>Place List</strong><br>
+                    <button type="button" class="btn btn-primary py-3" onclick="location.href='#';"><strong>Place
+                            List</strong><br>
                         <small>: 목록에 원하는 장소 추가하기</small></button>
                 </div>
             </div>
@@ -118,16 +128,6 @@
                 </li>
             </ul>
     </footer>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var resultDate = localStorage.getItem('resultDate');
-            if (resultDate) {
-                document.getElementById('result-date').innerText = resultDate;
-            }
-
-            localStorage.removeItem('resultDate');
-        });
-    </script>
 </body>
 
 </html>
