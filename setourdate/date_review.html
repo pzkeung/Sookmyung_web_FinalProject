@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Our Date</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="./common.css">
+    <style>
+        .postcard-wrap {
+            width: 800px;
+            height: 400px;
+            padding: 15px;
+            border: 3px dashed #90caf9;
+            background-color: #e3f2fd;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .postcard {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .postcard-photo {
+            position: relative;
+            width: 60%;
+            height: 300px;
+            overflow: hidden;
+            padding: 10px;
+        }
+
+        .postcard-photo img {
+            position: absolute;
+            object-fit: cover;
+        }
+
+        .postcard-photo img:first-child {
+            width: 60%;
+            left: 0;
+            top: 0;
+            z-index: 1;
+            ;
+        }
+
+        .postcard-photo img:last-child {
+            width: 70%;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+        }
+
+        .postcard-detail {
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        #postcard-detail-date {
+            text-align: end;
+            text-decoration: underline;
+        }
+
+        #postcard-detail-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        #postcard-detail-places {
+            display: flex;
+            flex-direction: row;
+            gap: 5px;
+        }
+
+        #postcard-detail-content {
+            text-align: justify;
+        }
+
+        .download-btn-container {
+            text-align: right;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar pb-0 mx-3">
+            <a id="header-logo" class="navbar-brand mx-3" href="main.html">
+                <img src="./images/logo.png" alt="Set Our Date logo" style="height: 40px;">
+            </a>
+            <ul class="navbar-nav flex-row">
+                <li id="menu" class="nav-item px-2 mx-4">
+                    <a class="nav-link" href="./how_to_use.html">How To Use</a>
+                </li>
+                <li id="menu" class="nav-item px-2 mx-4">
+                    <a class="nav-link" href="./new_date.html">Set New Date</a>
+                </li>
+                <li id="menu" class="nav-item px-2 mx-4">
+                    <a class="nav-link" href="./my_date_log.html">My Date Log</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main class="flex-grow-1">
+        <div class="container my-4 mx-5">
+            <div class="postcard-wrap">
+                <div class="postcard" id="postcard">
+                    <div class="postcard-photo" id="postcard-photo">
+                        <img src="./images/review1.jpg" alt="Photo 1">
+                        <img src="./images/review2.jpg" alt="Photo 2">
+                    </div>
+                    <div class="postcard-detail" id="postcard-detail">
+                        <div id="postcard-detail-date" class="px-3 py-1">
+                            <p>2024-04-27</p>
+                        </div>
+                        <div id="postcard-detail-title" class="px-3 py-1">
+                            <p>가족과 올림픽공원 피크닉</p>
+                        </div>
+                        <div id="postcard-detail-places" class="px-3 py-1">
+                            <img src="./images/icons/place.png" alt="Place icon" style="height:20px">
+                            <p>Olympic Park, Songpa</p>
+                        </div>
+                        <div id="postcard-detail-content" class="px-3 py-1">
+                            <p>벚꽃 시즌인 4월 막바지에 엄마랑 아빠가 서울로 올라오셔서 가까운 올림픽공원으로 피크닉을 하러 갔다.
+                                <br>
+                                가족과 함께하는 시간, 예쁜 벚꽃과 맛있는 라면 조합은 언제나 힐링이지~
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="download-btn-container">
+                <button id="download-btn" class="btn btn-primary btn-lg" onclick="downloadPostcard()">엽서 다운로드</button>
+            </div>
+        </div>
+    </main>
+    <footer class="text-center mt-auto">
+        <nav class="navbar navbar-light d-flex justify-content-center align-items-center py-0">
+            <ul class="navbar-nav d-flex flex-row">
+                <li class="nav-item mx-5">
+                    <a class="nav-link" href="#">Git</a>
+                </li>
+                <li class="nav-item mx-5">
+                    <a class="nav-link" href="#">Privacy</a>
+                </li>
+                <li class="nav-item mx-5">
+                    <a class="nav-link" href="#">Feedback</a>
+                </li>
+            </ul>
+    </footer>
+    <script>
+        function downloadPostcard() {
+            const postcard = document.getElementById('postcard');
+            // canvas로 다운로드 할 수 있도록 변경
+
+            alert('엽서가 다운로드 되었습니다.');
+        }
+    </script>
+</body>
+
+</html>

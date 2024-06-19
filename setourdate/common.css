@@ -32,3 +32,14 @@ footer {
     background-color: #4189bc;
     border-color: #4189bc;
 }
+
+.btn-light {
+    background-color: #e3f2fd;
+    border-color: #e3f2fd;
+}
+
+.btn-light:hover,
+.btn-light:active {
+    background-color: #b0d4f1;
+    border-color: #b0d4f1;
+}
